@@ -1,5 +1,15 @@
+#pagina {
+	-fx-background-image: url("sfondo.jpg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 900 506;
+}
 
-
-#pagina1 {
-	-fx-background-image: url("/src/it/edu/iisgubbio/gioco/sfondo.png");
+#gioca{
+	-fx-padding: 10 20 10 20;
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+	-fx-background-radius: 40;
+	-fx-border-color: black;
+	-fx-border-radius: 40;
+	-fx-background-color: rgb(255, 0, 0, 0.7);
 }
