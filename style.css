@@ -1,15 +1,31 @@
-#pagina {
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+#pagina{
 	-fx-background-image: url("sfondo.jpg");
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: 900 506;
 }
 
 #gioca{
-	-fx-padding: 10 20 10 20;
-	-fx-font-size: 30;
-	-fx-font-weight: bold;
-	-fx-background-radius: 40;
-	-fx-border-color: black;
-	-fx-border-radius: 40;
-	-fx-background-color: rgb(255, 0, 0, 0.7);
+	-fx-background-color:
+        linear-gradient(#ff6200, #ff0000),
+        radial-gradient(center 50% -40%, radius 200%, #ff6200 45%, #ff0000 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #610000;
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 20;
+    -fx-padding: 13 40 13 40;
+    -fx-font-weight: bolder;
+}
+
+#player, #difficolta{
+	-fx-background-color:
+        linear-gradient(#ff6200, #ff0000),
+        radial-gradient(center 50% -40%, radius 200%, #ff6200 45%, #ff0000 50%);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+	-fx-font-family: 'Public Pixel', sans-serif;
+	-fx-font-weight: bolder;
+	-fx-font-size: 15;
+	-fx-padding: 6 10 6 10;
 }
