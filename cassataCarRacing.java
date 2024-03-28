@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +11,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,10 +24,11 @@ public class cassataCarRacing extends Application{
 	Image titolo = new Image("it/edu/iisgubbio/gioco/titolo.png");
 	ImageView titoloW = new ImageView(titolo);
 	
+	Image mBlu = new Image("it/edu/iisgubbio/gioco/mBlu.png");
+	ImageView mBluW = new ImageView(mBlu);
+	
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
-	Image strada1 = new Image("it/edu/iisgubbio/gioco/strada1.png");
 	ImageView stradaW = new ImageView(strada);
-	ImageView stradaW1 = new ImageView(strada1);
 	
 	RadioButton macchina1 = new RadioButton("macchina 1");
 	RadioButton macchina2 = new RadioButton("macchina 2");
@@ -66,6 +67,7 @@ public class cassataCarRacing extends Application{
 		difficolta.setLayoutY(115);
 		
 		apri.setOnAction(e->apri());
+		difficolta.setOnAction(e->difficolta());
 		
 		apri.setId("gioca");
 		titoloW.setId("titolo");
@@ -81,15 +83,21 @@ public class cassataCarRacing extends Application{
 		finestra.show();
 	}
 
-	private void apri() {
-		SecondaFinestra finestra2 = new SecondaFinestra();
+	private void difficolta() {
+		FinestraDifficolta finestra2 = new FinestraDifficolta();
 		finestra2.show();
 	}
 
-	public class SecondaFinestra extends Stage{
+	private void apri() {
+		FinestraGioco finestra2 = new FinestraGioco();
+		finestra2.show();
+	}
+
+	public class FinestraGioco extends Stage{
 		Timeline tempo = new Timeline(new KeyFrame(Duration.seconds(0.02), x->aggiorna()));
 		int y = -278;
-		  public SecondaFinestra(){
+		int x = 10;
+		  public FinestraGioco(){
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 290, 700);
 			
@@ -98,24 +106,58 @@ public class cassataCarRacing extends Application{
 			
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(stradaW);
-			griglia2.getChildren().add(stradaW1);
-			stradaW1.setX(145);
-			stradaW1.setY(y);
+			griglia2.getChildren().add(mBluW);
 			stradaW.setY(y);
+			mBluW.setX(x);
+			mBluW.setY(520);
+			
+			scene.setOnKeyPressed(e->muovi(e));
 			
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
 		    setScene(scene);
 		    setResizable(false);
 		  }
+		private void muovi(KeyEvent e) {
+			if(e.getCode() == KeyCode.LEFT) {
+				x-=6;
+			}
+			
+			if(e.getCode() == KeyCode.RIGHT) {
+				x+=6;
+			}
+			if(x<=9) {
+				x+=6;
+			}
+			if(x>=240) {
+				x-=6;
+			}
+			
+			mBluW.setX(x);
+		}
 		public void aggiorna() {
-			stradaW1.setY(y);
 			stradaW.setY(y);
-			y = y + 9;
+			y = y + 10;
 			if(y>=0) {
 				y=-278;
 			}
 		}
+		}
+	
+	public class FinestraDifficolta extends Stage{
+		  public FinestraDifficolta(){
+			Pane griglia2 = new Pane();
+			Scene scene = new Scene(griglia2 , 400, 300);
+			Label scritta = new Label("finestra difficolta");
+		
+			griglia2.setPadding(new Insets(10));
+			griglia2.getChildren().add(scritta);
+			
+			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
+		    setTitle("CCR: Cassata Car Racing");
+		    setScene(scene);
+		    setResizable(false);
+		  }
 		}
 	
 	public static void main(String[] args) {
