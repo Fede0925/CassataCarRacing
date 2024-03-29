@@ -97,8 +97,9 @@ public class cassataCarRacing extends Application{
 		Timeline tempo = new Timeline(new KeyFrame(Duration.seconds(0.02), x->aggiorna()));
 		int y = -278;
 		int rotazione = 0;
-		int x = 10;
+		double x = 10;
 		int velocita = 6;
+		
 		  public FinestraGioco(){
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 290, 700);
@@ -122,6 +123,7 @@ public class cassataCarRacing extends Application{
 		  }
 		  
 		  private void muovi(KeyEvent e) {
+//			  rotazione macchina
 				if(e.getCode() == KeyCode.LEFT) {
 					rotazione-=5;
 				}
@@ -142,16 +144,19 @@ public class cassataCarRacing extends Application{
 			}
 		  
 		public void aggiorna() {
+//			movimento strada
 			stradaW.setY(y);
 			y = y + 10;
 			if(y>=0) {
 				y=-278;
 			}
+//			movimento macchina
+			if(x>9 && x<240) {
 			if(rotazione>0) {
-				x+=1;
+				x+=1.5;
 			}
 			if(rotazione<0) {
-				x-=1;
+				x-=1.5;
 			}
 			if(rotazione>5) {
 				x+=1.8;
@@ -159,19 +164,18 @@ public class cassataCarRacing extends Application{
 			if(rotazione<-5) {
 				x-=1.8;
 			}
+			}
 			if(x<=9) {
-				x+=1;
-				if(rotazione<-5) {
-					x+=1.8;
-				}
+				x=10;
+				rotazione=0;
 			}
 			if(x>=240) {
-				x-=1;
-				if(rotazione>5) {
-					x-=1.8;
-				}
+				x=239;
+				rotazione=0;
 			}
+			
 			mBluW.setX(x);
+			mBluW.setRotate(rotazione);
 		}
 		}
 	
