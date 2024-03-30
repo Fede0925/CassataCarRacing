@@ -68,6 +68,7 @@ public class cassataCarRacing extends Application{
 		
 		apri.setOnAction(e->apri());
 		difficolta.setOnAction(e->difficolta());
+		giocatore.setOnAction(e->veicolo());
 		
 		apri.setId("gioca");
 		titoloW.setId("titolo");
@@ -81,6 +82,11 @@ public class cassataCarRacing extends Application{
 		finestra.setTitle("CCR: Cassata Car Racing");
 		finestra.setResizable(false);
 		finestra.show();
+	}
+
+	private void veicolo() {
+		FinestraVeicolo finestra2 = new FinestraVeicolo();
+		finestra2.show();
 	}
 
 	private void difficolta() {
@@ -184,6 +190,22 @@ public class cassataCarRacing extends Application{
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 400, 300);
 			Label scritta = new Label("finestra difficolta");
+		
+			griglia2.setPadding(new Insets(10));
+			griglia2.getChildren().add(scritta);
+			
+			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
+		    setTitle("CCR: Cassata Car Racing");
+		    setScene(scene);
+		    setResizable(false);
+		  }
+		}
+	
+	public class FinestraVeicolo extends Stage{
+		  public FinestraVeicolo(){
+			Pane griglia2 = new Pane();
+			Scene scene = new Scene(griglia2 , 400, 300);
+			Label scritta = new Label("finestra veicolo");
 		
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(scritta);
