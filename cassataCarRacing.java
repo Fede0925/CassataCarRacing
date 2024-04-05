@@ -15,6 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class cassataCarRacing extends Application{
@@ -122,13 +123,18 @@ public class cassataCarRacing extends Application{
 			
 			scene.setOnKeyPressed(e->muovi(e));
 			
+			addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, e->ciao());
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
 		    setScene(scene);
 		    setResizable(false);
 		  }
 		  
-		  private void muovi(KeyEvent e) {
+		  private void ciao() {
+			  tempo.stop();
+		  }
+
+		private void muovi(KeyEvent e) {
 //			  rotazione macchina
 				if(e.getCode() == KeyCode.LEFT) {
 					rotazione-=5;
