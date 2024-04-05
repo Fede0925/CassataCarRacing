@@ -19,6 +19,24 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class cassataCarRacing extends Application{
+	Image gatto = new Image("it/edu/iisgubbio/gioco/giphy.gif");
+	ImageView gattoW = new ImageView(gatto);
+	
+	Image giamma = new Image("it/edu/iisgubbio/gioco/giamma.jpeg");
+	ImageView giammaW = new ImageView(giamma);
+	
+	Image rana = new Image("it/edu/iisgubbio/gioco/rana.jpg");
+	ImageView ranaW = new ImageView(rana);
+	
+	Image rock = new Image("it/edu/iisgubbio/gioco/rock.gif");
+	ImageView rockW = new ImageView(rock);
+	
+	Image homer = new Image("it/edu/iisgubbio/gioco/homer.gif");
+	ImageView homerW = new ImageView(homer);
+	
+	Image shrek = new Image("it/edu/iisgubbio/gioco/shrek.jpg");
+	ImageView shrekW = new ImageView(shrek);
+	
 	Image macchina = new Image("it/edu/iisgubbio/gioco/car.png");
 	ImageView macchinaW = new ImageView(macchina);
 	
@@ -194,11 +212,36 @@ public class cassataCarRacing extends Application{
 	public class FinestraDifficolta extends Stage{
 		  public FinestraDifficolta(){
 			Pane griglia2 = new Pane();
-			Scene scene = new Scene(griglia2 , 400, 300);
-			Label scritta = new Label("finestra difficolta");
+			Scene scene = new Scene(griglia2 , 1210, 444);
 		
 			griglia2.setPadding(new Insets(10));
-			griglia2.getChildren().add(scritta);
+			griglia2.getChildren().add(gattoW);
+			griglia2.getChildren().add(giammaW);
+			griglia2.getChildren().add(ranaW);
+			griglia2.getChildren().add(rockW);
+			griglia2.getChildren().add(homerW);
+			griglia2.getChildren().add(shrekW);
+			
+			giammaW.setX(0);
+			giammaW.setY(152);
+			giammaW.setFitHeight(140);
+			giammaW.setFitWidth(240);
+			ranaW.setX(0);
+			ranaW.setY(292);
+			ranaW.setFitHeight(152);
+			ranaW.setFitWidth(240);
+			rockW.setX(970);
+			rockW.setY(0);
+			rockW.setFitHeight(140);
+			rockW.setFitWidth(240);
+			homerW.setX(970);
+			homerW.setY(140);
+			homerW.setFitHeight(152);
+			homerW.setFitWidth(240);
+			shrekW.setX(970);
+			shrekW.setY(292);
+			shrekW.setFitHeight(152);
+			shrekW.setFitWidth(240);
 			
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
