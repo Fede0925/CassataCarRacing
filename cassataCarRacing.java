@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -37,6 +36,9 @@ public class cassataCarRacing extends Application{
 	Image shrek = new Image("it/edu/iisgubbio/gioco/shrek.jpg");
 	ImageView shrekW = new ImageView(shrek);
 	
+	Image bugs = new Image("it/edu/iisgubbio/gioco/bugs.gif");
+	ImageView bugsW = new ImageView(bugs);
+	
 	Image macchina = new Image("it/edu/iisgubbio/gioco/car.png");
 	ImageView macchinaW = new ImageView(macchina);
 	
@@ -49,10 +51,6 @@ public class cassataCarRacing extends Application{
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
 	ImageView stradaW = new ImageView(strada);
 	
-	RadioButton macchina1 = new RadioButton("macchina 1");
-	RadioButton macchina2 = new RadioButton("macchina 2");
-	RadioButton macchina3 = new RadioButton("macchina 3");
-	
 	Button apri = new Button("GIOCA");
 	Button giocatore = new Button("Seleziona veicolo");
 	Button difficolta = new Button("Seleziona difficolta");
@@ -60,12 +58,7 @@ public class cassataCarRacing extends Application{
 	public void start(Stage finestra) {
 		Pane griglia = new Pane();
 		Scene scena = new Scene(griglia, 900, 506);
-		ToggleGroup veicoli = new ToggleGroup();
 		scena.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
-		
-		macchina1.setToggleGroup(veicoli);
-		macchina2.setToggleGroup(veicoli);
-		macchina3.setToggleGroup(veicoli);
 		
 		griglia.setId("pagina");
 		griglia.setPadding(new Insets(10));
@@ -73,9 +66,7 @@ public class cassataCarRacing extends Application{
 		griglia.getChildren().add(apri);
 		griglia.getChildren().add(giocatore);
 		griglia.getChildren().add(difficolta);
-//		griglia.getChildren().add(macchina1);
-//		griglia.getChildren().add(macchina2);
-//		griglia.getChildren().add(macchina3);
+		
 		titoloW.setX(200);
 		titoloW.setY(25);
 		apri.setLayoutX(350);
@@ -135,9 +126,14 @@ public class cassataCarRacing extends Application{
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(stradaW);
 			griglia2.getChildren().add(mBluW);
+			griglia2.getChildren().add(bugsW);
 			stradaW.setY(y);
 			mBluW.setX(x);
 			mBluW.setY(520);
+			bugsW.setX(290);
+			bugsW.setY(700);
+			bugsW.setFitHeight(100);
+			bugsW.setFitWidth(100);
 			
 			scene.setOnKeyPressed(e->muovi(e));
 			
@@ -170,6 +166,11 @@ public class cassataCarRacing extends Application{
 					rotazione+=5;
 				}
 				
+				if(e.getCode() != KeyCode.RIGHT && e.getCode() != KeyCode.LEFT) {
+					bugsW.setX(95);
+					bugsW.setY(100);
+				}
+				
 				mBluW.setRotate(rotazione);
 			}
 		  
@@ -178,6 +179,8 @@ public class cassataCarRacing extends Application{
 			stradaW.setY(y);
 			y = y + 10;
 			if(y>=0) {
+				bugsW.setX(290);
+				bugsW.setY(700);
 				y=-278;
 			}
 //			movimento macchina
@@ -251,13 +254,36 @@ public class cassataCarRacing extends Application{
 		}
 	
 	public class FinestraVeicolo extends Stage{
+		ToggleGroup veicoli = new ToggleGroup();
+		RadioButton macchina1 = new RadioButton("macchina 1");
+		RadioButton macchina2 = new RadioButton("macchina 2");
+		RadioButton macchina3 = new RadioButton("macchina 3");
 		  public FinestraVeicolo(){
 			Pane griglia2 = new Pane();
-			Scene scene = new Scene(griglia2 , 400, 300);
-			Label scritta = new Label("finestra veicolo");
-		
+			Scene scene = new Scene(griglia2 , 900, 506);
+			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
+			
 			griglia2.setPadding(new Insets(10));
-			griglia2.getChildren().add(scritta);
+			griglia2.getChildren().add(macchina1);
+			griglia2.getChildren().add(macchina2);
+			griglia2.getChildren().add(macchina3);
+			
+//			macchina 1
+			macchina1.setToggleGroup(veicoli);
+			macchina1.setLayoutX(200);
+			macchina1.setLayoutY(270);
+//			macchina 2
+			macchina2.setToggleGroup(veicoli);
+			macchina2.setLayoutX(450);
+			macchina2.setLayoutY(270);
+//			macchina 3
+			macchina3.setToggleGroup(veicoli);
+			macchina3.setLayoutX(700);
+			macchina3.setLayoutY(270);
+			
+			macchina1.setId("m1");
+			macchina2.setId("m2");
+			macchina3.setId("m3");
 			
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
