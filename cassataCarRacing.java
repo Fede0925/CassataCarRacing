@@ -48,6 +48,21 @@ public class cassataCarRacing extends Application{
 	Image mBlu = new Image("it/edu/iisgubbio/gioco/mBlu.png");
 	ImageView mBluW = new ImageView(mBlu);
 	
+	Image mGialla = new Image("it/edu/iisgubbio/gioco/mGialla.png");
+	ImageView mGiallaW = new ImageView(mGialla);
+	
+	Image mRossa = new Image("it/edu/iisgubbio/gioco/mRossa.png");
+	ImageView mRossaW = new ImageView(mRossa);
+	
+	Image vespa = new Image("it/edu/iisgubbio/gioco/vespa.png");
+	ImageView vespaW = new ImageView(vespa);
+	
+	Image moto1 = new Image("it/edu/iisgubbio/gioco/moto01.png");
+	ImageView moto1W = new ImageView(moto1);
+	
+	Image moto2 = new Image("it/edu/iisgubbio/gioco/moto02.png");
+	ImageView moto2W = new ImageView(moto2);
+	
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
 	ImageView stradaW = new ImageView(strada);
 	
@@ -66,6 +81,21 @@ public class cassataCarRacing extends Application{
 		griglia.getChildren().add(apri);
 		griglia.getChildren().add(giocatore);
 		griglia.getChildren().add(difficolta);
+		
+		mGiallaW.setFitWidth(41);
+		mGiallaW.setFitHeight(89);
+		
+		mRossaW.setFitWidth(41);
+		mRossaW.setFitHeight(89);
+		
+		vespaW.setFitWidth(41);
+		vespaW.setFitHeight(89);
+		
+		moto1W.setFitWidth(41);
+		moto1W.setFitHeight(89);
+		
+		moto2W.setFitWidth(41);
+		moto2W.setFitHeight(89);
 		
 		titoloW.setX(200);
 		titoloW.setY(25);
@@ -255,35 +285,78 @@ public class cassataCarRacing extends Application{
 	
 	public class FinestraVeicolo extends Stage{
 		ToggleGroup veicoli = new ToggleGroup();
-		RadioButton macchina1 = new RadioButton("macchina 1");
-		RadioButton macchina2 = new RadioButton("macchina 2");
-		RadioButton macchina3 = new RadioButton("macchina 3");
+		RadioButton macchina1 = new RadioButton();
+		RadioButton macchina2 = new RadioButton();
+		RadioButton macchina3 = new RadioButton();
+		RadioButton moto1 = new RadioButton();
+		RadioButton moto2 = new RadioButton();
+		RadioButton moto3 = new RadioButton();
+		
 		  public FinestraVeicolo(){
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 900, 506);
 			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
 			
+			griglia2.setId("paginaVeicoli");
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(macchina1);
 			griglia2.getChildren().add(macchina2);
 			griglia2.getChildren().add(macchina3);
+			griglia2.getChildren().add(moto1);
+			griglia2.getChildren().add(moto2);
+			griglia2.getChildren().add(moto3);
+			griglia2.getChildren().add(mBluW);
+			griglia2.getChildren().add(mRossaW);
+			griglia2.getChildren().add(mGiallaW);
+			griglia2.getChildren().add(vespaW);
+			griglia2.getChildren().add(moto1W);
+			griglia2.getChildren().add(moto2W);
+			
+			mBluW.setX(190);
+			mRossaW.setX(440);
+			mGiallaW.setX(690);
+			mBluW.setY(80);
+			mRossaW.setY(80);
+			mGiallaW.setY(80);
+			vespaW.setX(190);
+			moto1W.setX(440);
+			moto2W.setX(690);
+			vespaW.setY(300);
+			moto1W.setY(300);
+			moto2W.setY(300);
 			
 //			macchina 1
 			macchina1.setToggleGroup(veicoli);
 			macchina1.setLayoutX(200);
-			macchina1.setLayoutY(270);
+			macchina1.setLayoutY(180);
 //			macchina 2
 			macchina2.setToggleGroup(veicoli);
 			macchina2.setLayoutX(450);
-			macchina2.setLayoutY(270);
+			macchina2.setLayoutY(180);
 //			macchina 3
 			macchina3.setToggleGroup(veicoli);
 			macchina3.setLayoutX(700);
-			macchina3.setLayoutY(270);
+			macchina3.setLayoutY(180);
 			
 			macchina1.setId("m1");
 			macchina2.setId("m2");
 			macchina3.setId("m3");
+			
+			moto1.setId("m1");
+			moto2.setId("m2");
+			moto3.setId("m3");
+			
+			moto1.setToggleGroup(veicoli);
+			moto1.setLayoutX(200);
+			moto1.setLayoutY(400);
+			
+			moto2.setToggleGroup(veicoli);
+			moto2.setLayoutX(450);
+			moto2.setLayoutY(400);
+			
+			moto3.setToggleGroup(veicoli);
+			moto3.setLayoutX(700);
+			moto3.setLayoutY(400);
 			
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");

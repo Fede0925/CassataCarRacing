@@ -5,6 +5,12 @@
 	-fx-background-size: 900 506;
 }
 
+#paginaVeicoli{
+	-fx-background-image: url("muro.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 900 506;
+}
+
 #gioca{
 	-fx-background-color:
         linear-gradient(#ff6200, #ff0000),
@@ -30,6 +36,35 @@
 	-fx-padding: 6 10 6 10;
 }
 
-#m1{
-	-fx-padding: 3px;
+#m1, #m2, #m3{
+	-fx-font-size: 20;
+}
+
+#m1 .radio, #m2 .radio, #m3 .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+    -fx-background-color: white;
+    -fx-border-radius: 15px;
+    -fx-padding: 3px;
+}
+
+#m1 .radio:selected, #m2 .radio:selected, #m3 .radio:selected {
+    -fx-background-color: white;
+}
+
+#m1 -radio:armed, #m2 -radio:armed, #m3 -radio:armed {
+    -fx-background-color: white;
+}
+
+#m1 -radio:determinate, #m2 -radio:determinate, #m3 -radio:determinate {
+    -fx-background-color: white;
+}
+
+#m1 -radio:indeterminate, #m2 -radio:indeterminate, #m3 -radio:indeterminate {
+    -fx-background-color: white;
+}
+
+#m1.dot, #m2.dot, #m3.dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
 }
