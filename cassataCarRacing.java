@@ -3,6 +3,7 @@ package it.edu.iisgubbio.gioco;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,21 +48,27 @@ public class cassataCarRacing extends Application{
 	
 	Image mBlu = new Image("it/edu/iisgubbio/gioco/mBlu.png");
 	ImageView mBluW = new ImageView(mBlu);
+	Boolean blu = false;
 	
 	Image mGialla = new Image("it/edu/iisgubbio/gioco/mGialla.png");
 	ImageView mGiallaW = new ImageView(mGialla);
+	Boolean gialla = false;
 	
 	Image mRossa = new Image("it/edu/iisgubbio/gioco/mRossa.png");
 	ImageView mRossaW = new ImageView(mRossa);
+	Boolean rossa = false;
 	
 	Image vespa = new Image("it/edu/iisgubbio/gioco/vespa.png");
 	ImageView vespaW = new ImageView(vespa);
+	Boolean bVespa = false;
 	
 	Image moto1 = new Image("it/edu/iisgubbio/gioco/moto01.png");
 	ImageView moto1W = new ImageView(moto1);
+	Boolean bMoto1 = false;
 	
 	Image moto2 = new Image("it/edu/iisgubbio/gioco/moto02.png");
 	ImageView moto2W = new ImageView(moto2);
+	Boolean bMoto2 = false;
 	
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
 	ImageView stradaW = new ImageView(strada);
@@ -145,6 +152,7 @@ public class cassataCarRacing extends Application{
 		int rotazione = 0;
 		double x = 10;
 		int velocita = 6;
+		Boolean veicolo = false;
 		
 		  public FinestraGioco(){
 			Pane griglia2 = new Pane();
@@ -155,27 +163,77 @@ public class cassataCarRacing extends Application{
 			
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(stradaW);
-			griglia2.getChildren().add(mBluW);
 			griglia2.getChildren().add(bugsW);
 			stradaW.setY(y);
-			mBluW.setX(x);
-			mBluW.setY(520);
 			bugsW.setX(290);
 			bugsW.setY(700);
 			bugsW.setFitHeight(100);
 			bugsW.setFitWidth(100);
 			
+			if(blu) {
+				griglia2.getChildren().add(mBluW);
+				mBluW.setX(x);
+				mBluW.setY(520);
+				veicolo = true;
+			}
+			if(rossa) {
+				griglia2.getChildren().add(mRossaW);
+				mRossaW.setX(x);
+				mRossaW.setY(520);
+				veicolo = true;
+			}
+			if(gialla) {
+				griglia2.getChildren().add(mGiallaW);
+				mGiallaW.setX(x);
+				mGiallaW.setY(520);
+				veicolo = true;
+			}
+			if(bVespa) {
+				griglia2.getChildren().add(vespaW);
+				vespaW.setX(x);
+				vespaW.setY(520);
+				veicolo = true;
+			}
+			if(bMoto1) {
+				griglia2.getChildren().add(moto1W);
+				moto1W.setX(x);
+				moto1W.setY(520);
+				veicolo = true;
+			}
+			if(bMoto2) {
+				griglia2.getChildren().add(moto2W);
+				moto2W.setX(x);
+				moto2W.setY(520);
+				veicolo = true;
+			}
+			if(!veicolo) {
+				griglia2.getChildren().add(mBluW);
+				mBluW.setX(x);
+				mBluW.setY(520);
+			}
+			
 			scene.setOnKeyPressed(e->muovi(e));
 			
-			addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, e->ciao());
+			addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, e->{
+				griglia2.getChildren().remove(mBluW);
+				blu=false;
+				griglia2.getChildren().remove(mRossaW);
+				rossa=false;
+				griglia2.getChildren().remove(mGiallaW);
+				gialla=false;
+				griglia2.getChildren().remove(vespaW);
+				bVespa=false;
+				griglia2.getChildren().remove(moto1W);
+				bMoto1=false;
+				griglia2.getChildren().remove(moto2W);
+				bMoto2=false;
+				
+				tempo.stop();
+			});
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
 		    setScene(scene);
 		    setResizable(false);
-		  }
-		  
-		  private void ciao() {
-			  tempo.stop();
 		  }
 
 		private void muovi(KeyEvent e) {
@@ -201,7 +259,27 @@ public class cassataCarRacing extends Application{
 					bugsW.setY(100);
 				}
 				
-				mBluW.setRotate(rotazione);
+				if(blu) {
+					mBluW.setRotate(rotazione);
+				}
+				if(rossa) {
+					mRossaW.setRotate(rotazione);
+				}
+				if(gialla) {
+					mGiallaW.setRotate(rotazione);
+				}
+				if(bVespa) {
+					vespaW.setRotate(rotazione);
+				}
+				if(bMoto1) {
+					moto1W.setRotate(rotazione);
+				}
+				if(bMoto2) {
+					moto2W.setRotate(rotazione);
+				}
+				if(!veicolo) {
+					mBluW.setRotate(rotazione);
+				}
 			}
 		  
 		public void aggiorna() {
@@ -237,8 +315,34 @@ public class cassataCarRacing extends Application{
 				rotazione=0;
 			}
 			
-			mBluW.setX(x);
-			mBluW.setRotate(rotazione);
+			if(blu) {
+				mBluW.setRotate(rotazione);
+				mBluW.setX(x);
+			}
+			if(rossa) {
+				mRossaW.setRotate(rotazione);
+				mRossaW.setX(x);
+			}
+			if(gialla) {
+				mGiallaW.setRotate(rotazione);
+				mGiallaW.setX(x);
+			}
+			if(bVespa) {
+				vespaW.setRotate(rotazione);
+				vespaW.setX(x);
+			}
+			if(bMoto1) {
+				moto1W.setRotate(rotazione);
+				moto1W.setX(x);
+			}
+			if(bMoto2) {
+				moto2W.setRotate(rotazione);
+				moto2W.setX(x);
+			}
+			if(!veicolo) {
+				mBluW.setRotate(rotazione);
+				mBluW.setX(x);
+			}
 		}
 		}
 	
@@ -285,10 +389,10 @@ public class cassataCarRacing extends Application{
 	
 	public class FinestraVeicolo extends Stage{
 		ToggleGroup veicoli = new ToggleGroup();
-		RadioButton macchina1 = new RadioButton();
-		RadioButton macchina2 = new RadioButton();
-		RadioButton macchina3 = new RadioButton();
-		RadioButton moto1 = new RadioButton();
+		RadioButton macchinaBlu = new RadioButton();
+		RadioButton macchinaRossa = new RadioButton();
+		RadioButton macchinaGialla = new RadioButton();
+		RadioButton vespaRb = new RadioButton();
 		RadioButton moto2 = new RadioButton();
 		RadioButton moto3 = new RadioButton();
 		
@@ -297,12 +401,28 @@ public class cassataCarRacing extends Application{
 			Scene scene = new Scene(griglia2 , 900, 506);
 			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
 			
+			blu=false;
+			rossa=false;
+			gialla=false;
+			bVespa=false;
+			bMoto1=false;
+			bMoto2=false;
+			
+			mBluW.setRotate(0);
+			mRossaW.setRotate(0);
+			mGiallaW.setRotate(0);
+			vespaW.setRotate(0);
+			moto1W.setRotate(0);
+			moto2W.setRotate(0);
+			
+	        Button btn = new Button();
+	        
 			griglia2.setId("paginaVeicoli");
 			griglia2.setPadding(new Insets(10));
-			griglia2.getChildren().add(macchina1);
-			griglia2.getChildren().add(macchina2);
-			griglia2.getChildren().add(macchina3);
-			griglia2.getChildren().add(moto1);
+			griglia2.getChildren().add(macchinaBlu);
+			griglia2.getChildren().add(macchinaRossa);
+			griglia2.getChildren().add(macchinaGialla);
+			griglia2.getChildren().add(vespaRb);
 			griglia2.getChildren().add(moto2);
 			griglia2.getChildren().add(moto3);
 			griglia2.getChildren().add(mBluW);
@@ -311,52 +431,80 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(vespaW);
 			griglia2.getChildren().add(moto1W);
 			griglia2.getChildren().add(moto2W);
+			griglia2.getChildren().add(btn);
 			
 			mBluW.setX(190);
 			mRossaW.setX(440);
 			mGiallaW.setX(690);
-			mBluW.setY(80);
-			mRossaW.setY(80);
-			mGiallaW.setY(80);
+			mBluW.setY(60);
+			mRossaW.setY(60);
+			mGiallaW.setY(60);
 			vespaW.setX(190);
 			moto1W.setX(440);
 			moto2W.setX(690);
-			vespaW.setY(300);
-			moto1W.setY(300);
-			moto2W.setY(300);
+			vespaW.setY(280);
+			moto1W.setY(280);
+			moto2W.setY(280);
 			
 //			macchina 1
-			macchina1.setToggleGroup(veicoli);
-			macchina1.setLayoutX(200);
-			macchina1.setLayoutY(180);
+			macchinaBlu.setToggleGroup(veicoli);
+			macchinaBlu.setLayoutX(200);
+			macchinaBlu.setLayoutY(160);
 //			macchina 2
-			macchina2.setToggleGroup(veicoli);
-			macchina2.setLayoutX(450);
-			macchina2.setLayoutY(180);
+			macchinaRossa.setToggleGroup(veicoli);
+			macchinaRossa.setLayoutX(450);
+			macchinaRossa.setLayoutY(160);
 //			macchina 3
-			macchina3.setToggleGroup(veicoli);
-			macchina3.setLayoutX(700);
-			macchina3.setLayoutY(180);
+			macchinaGialla.setToggleGroup(veicoli);
+			macchinaGialla.setLayoutX(700);
+			macchinaGialla.setLayoutY(160);
 			
-			macchina1.setId("m1");
-			macchina2.setId("m2");
-			macchina3.setId("m3");
+			macchinaBlu.setId("m1");
+			macchinaRossa.setId("m2");
+			macchinaGialla.setId("m3");
 			
-			moto1.setId("m1");
+			vespaRb.setId("m1");
 			moto2.setId("m2");
 			moto3.setId("m3");
 			
-			moto1.setToggleGroup(veicoli);
-			moto1.setLayoutX(200);
-			moto1.setLayoutY(400);
+			vespaRb.setToggleGroup(veicoli);
+			vespaRb.setLayoutX(200);
+			vespaRb.setLayoutY(380);
 			
 			moto2.setToggleGroup(veicoli);
 			moto2.setLayoutX(450);
-			moto2.setLayoutY(400);
+			moto2.setLayoutY(380);
 			
 			moto3.setToggleGroup(veicoli);
 			moto3.setLayoutX(700);
-			moto3.setLayoutY(400);
+			moto3.setLayoutY(380);
+			
+	        btn.setText("Salva ed Esci");
+	        btn.setId("save");
+	        btn.setOnAction((ActionEvent event) -> {
+	        	if(macchinaBlu.isSelected()) {
+	        		blu=true;
+	        	}
+	        	if(macchinaGialla.isSelected()) {
+	        		gialla=true;
+	        	}
+	        	if(macchinaRossa.isSelected()) {
+	        		rossa=true;
+	        	}
+	        	if(vespaRb.isSelected()) {
+	        		bVespa=true;
+	        	}
+	        	if(moto2.isSelected()) {
+	        		bMoto1=true;
+	        	}
+	        	if(moto3.isSelected()) {
+	        		bMoto2=true;
+	        	}
+	        	
+	            hide();
+	        });
+			btn.setLayoutX(330);
+			btn.setLayoutY(440);
 			
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");

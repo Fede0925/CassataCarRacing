@@ -25,6 +25,20 @@
     -fx-font-weight: bolder;
 }
 
+#save{
+	-fx-background-color:
+        linear-gradient(#ff6200, #ff0000),
+        radial-gradient(center 50% -40%, radius 200%, #ff6200 45%, #ff0000 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #610000;
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 18;
+    -fx-padding: 12 17 12 17;
+    -fx-font-weight: bolder;
+}
+
 #player, #difficolta{
 	-fx-background-color:
         linear-gradient(#ff6200, #ff0000),
