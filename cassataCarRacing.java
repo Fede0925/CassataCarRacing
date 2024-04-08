@@ -75,6 +75,9 @@ public class cassataCarRacing extends Application{
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
 	ImageView stradaW = new ImageView(strada);
 	
+	int velS = 10;
+	int velocita = 8;
+	
 	Button apri = new Button("GIOCA");
 	Button giocatore = new Button("Seleziona veicolo");
 	Button difficolta = new Button("Seleziona difficolta");
@@ -91,20 +94,23 @@ public class cassataCarRacing extends Application{
 		griglia.getChildren().add(giocatore);
 		griglia.getChildren().add(difficolta);
 		
-		mGiallaW.setFitWidth(41);
-		mGiallaW.setFitHeight(89);
+		mBluW.setFitWidth(35);
+		mBluW.setFitHeight(70);
 		
-		mRossaW.setFitWidth(41);
-		mRossaW.setFitHeight(89);
+		mGiallaW.setFitWidth(35);
+		mGiallaW.setFitHeight(70);
 		
-		vespaW.setFitWidth(41);
-		vespaW.setFitHeight(89);
+		mRossaW.setFitWidth(35);
+		mRossaW.setFitHeight(70);
 		
-		moto1W.setFitWidth(41);
-		moto1W.setFitHeight(89);
+		vespaW.setFitWidth(35);
+		vespaW.setFitHeight(70);
 		
-		moto2W.setFitWidth(41);
-		moto2W.setFitHeight(89);
+		moto1W.setFitWidth(35);
+		moto1W.setFitHeight(70);
+		
+		moto2W.setFitWidth(35);
+		moto2W.setFitHeight(70);
 		
 		titoloW.setX(200);
 		titoloW.setY(25);
@@ -178,33 +184,33 @@ public class cassataCarRacing extends Application{
 			stradaW.setId("strada");
 			
 //			posizione X
-			posX[0]=35;
-			posX[1]=135;
-			posX[2]=235;
-			posX[3]=335;
-			posX[4]=435;
-			posX[5]=535;
+			posX[0]=16;
+			posX[1]=61;
+			posX[2]=107;
+			posX[3]=149;
+			posX[4]=193;
+			posX[5]=239;
 			
 			griglia2.getChildren().add(stradaW);
 			for(int i=0;i<carW1.length;i++) {
 				carW1[i] = new ImageView(macchina);
-				carW1[i].setFitHeight(89);
-				carW1[i].setFitWidth(45);
+				carW1[i].setFitHeight(70);
+				carW1[i].setFitWidth(35);
 				carW2[i] = new ImageView(macchina);
-				carW2[i].setFitHeight(89);
-				carW2[i].setFitWidth(45);
+				carW2[i].setFitHeight(70);
+				carW2[i].setFitWidth(35);
 				carW3[i] = new ImageView(macchina);
-				carW3[i].setFitHeight(89);
-				carW3[i].setFitWidth(45);
+				carW3[i].setFitHeight(70);
+				carW3[i].setFitWidth(35);
 				carW4[i] = new ImageView(macchina);
-				carW4[i].setFitHeight(89);
-				carW4[i].setFitWidth(45);
+				carW4[i].setFitHeight(70);
+				carW4[i].setFitWidth(35);
 				carW5[i] = new ImageView(macchina);
-				carW5[i].setFitHeight(89);
-				carW5[i].setFitWidth(45);
+				carW5[i].setFitHeight(70);
+				carW5[i].setFitWidth(35);
 				carW6[i] = new ImageView(macchina);
-				carW6[i].setFitHeight(89);
-				carW6[i].setFitWidth(45);
+				carW6[i].setFitHeight(70);
+				carW6[i].setFitWidth(35);
 				carW1[i].setX(posX[0]);
 				carW2[i].setX(posX[1]);
 				carW3[i].setX(posX[2]);
@@ -223,7 +229,6 @@ public class cassataCarRacing extends Application{
 				carW4[i].getStyleClass().add("traffico");
 				carW5[i].getStyleClass().add("traffico");
 				carW6[i].getStyleClass().add("traffico");
-				
 			}
 			
 			for(int i=0;i<carW1.length;i++) {
@@ -460,7 +465,7 @@ public class cassataCarRacing extends Application{
 		public void aggiorna() {
 //			movimento strada
 			stradaW.setY(y);
-			y = y + 10;
+			y = y + velS;
 			if(y>=0) {
 				bugsW.setX(290);
 				bugsW.setY(700);
@@ -520,12 +525,12 @@ public class cassataCarRacing extends Application{
 			}
 			
 			for(int i=0;i<carW1.length;i++) {
-				y1=(int) carW1[i].getY()+5;
-				y2=(int) carW2[i].getY()+5;
-				y3=(int) carW3[i].getY()+5;
-				y4=(int) carW4[i].getY()+5;
-				y5=(int) carW5[i].getY()+5;
-				y6=(int) carW6[i].getY()+5;
+				y1=(int) carW1[i].getY()+velocita;
+				y2=(int) carW2[i].getY()+velocita;
+				y3=(int) carW3[i].getY()+velocita;
+				y4=(int) carW4[i].getY()+velocita;
+				y5=(int) carW5[i].getY()+velocita;
+				y6=(int) carW6[i].getY()+velocita;
 				
 				carW1[i].setY(y1);
 				carW2[i].setY(y2);
@@ -535,7 +540,7 @@ public class cassataCarRacing extends Application{
 				carW6[i].setY(y6);
 			}
 			
-			if(y1>=650) {
+			if(y1>=700) {
 				for(int i=0;i<carW1.length;i++) {
 					int r = random(100, 1000);
 					int r2 = random(1100, 2000);
@@ -554,11 +559,11 @@ public class cassataCarRacing extends Application{
 					}
 				}
 			}
-			if(y2>=650) {
+			if(y2>=700) {
 				for(int i=0;i<carW1.length;i++) {
-					int r = random(100, 1000);
-					int r2 = random(1100, 2000);
-					int r3 = random(2100, 3000);
+					int r = random(500, 1400);
+					int r2 = random(1500, 2400);
+					int r3 = random(2500, 3400);
 					r=r-(r*2);
 					r2=r2-(r2*2);
 					r3=r3-(r3*2);
@@ -573,11 +578,11 @@ public class cassataCarRacing extends Application{
 					}
 				}
 			}
-			if(y3>=650) {
+			if(y3>=700) {
 				for(int i=0;i<carW1.length;i++) {
-					int r = random(100, 1000);
-					int r2 = random(1100, 2000);
-					int r3 = random(2100, 3000);
+					int r = random(900, 1800);
+					int r2 = random(1900, 2800);
+					int r3 = random(2900, 3800);
 					r=r-(r*2);
 					r2=r2-(r2*2);
 					r3=r3-(r3*2);
@@ -592,11 +597,11 @@ public class cassataCarRacing extends Application{
 					}
 				}
 			}
-			if(y4>=650) {
+			if(y4>=700) {
 				for(int i=0;i<carW1.length;i++) {
-					int r = random(100, 1000);
-					int r2 = random(1100, 2000);
-					int r3 = random(2100, 3000);
+					int r = random(900, 1800);
+					int r2 = random(1900, 2800);
+					int r3 = random(2900, 3800);
 					r=r-(r*2);
 					r2=r2-(r2*2);
 					r3=r3-(r3*2);
@@ -611,11 +616,11 @@ public class cassataCarRacing extends Application{
 					}
 				}
 			}
-			if(y5>=650) {
+			if(y5>=700) {
 				for(int i=0;i<carW1.length;i++) {
-					int r = random(100, 1000);
-					int r2 = random(1100, 2000);
-					int r3 = random(2100, 3000);
+					int r = random(500, 1400);
+					int r2 = random(1500, 2400);
+					int r3 = random(2500, 3400);
 					r=r-(r*2);
 					r2=r2-(r2*2);
 					r3=r3-(r3*2);
@@ -630,7 +635,7 @@ public class cassataCarRacing extends Application{
 					}
 				}
 			}
-			if(y6>=650) {
+			if(y6>=700) {
 				for(int i=0;i<carW1.length;i++) {
 					int r = random(100, 1000);
 					int r2 = random(1100, 2000);
@@ -648,6 +653,145 @@ public class cassataCarRacing extends Application{
 						carW6[i].setY(r3);
 					}
 				}
+			}
+			
+			if(gialla) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
+			}
+			
+			if(rossa) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
+			}
+			
+			if(blu || !veicolo) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
+			}
+			
+			
+			if(bVespa) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
+			}
+			
+			if(bMoto1) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
+			}
+			
+			if(bMoto2) {
+			for(int i=0;i<carW1.length;i++) {
+				if(carW1[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW2[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW3[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW4[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW5[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+				if(carW6[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					tempo.stop();
+				}
+			}
 			}
 			
 		}
@@ -746,15 +890,15 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(moto2W);
 			griglia2.getChildren().add(btn);
 			
-			mBluW.setX(190);
-			mRossaW.setX(440);
-			mGiallaW.setX(690);
+			mBluW.setX(195);
+			mRossaW.setX(445);
+			mGiallaW.setX(695);
 			mBluW.setY(60);
 			mRossaW.setY(60);
 			mGiallaW.setY(60);
-			vespaW.setX(190);
-			moto1W.setX(440);
-			moto2W.setX(690);
+			vespaW.setX(195);
+			moto1W.setX(445);
+			moto2W.setX(695);
 			vespaW.setY(280);
 			moto1W.setY(280);
 			moto2W.setY(280);
