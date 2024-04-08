@@ -82,3 +82,11 @@
     -fx-background-radius: 15px;
     -fx-padding: 8px;
 }
+
+.traffico {
+	-fx-z-index: 1;
+}
+
+#strada {
+	-fx-z-index: 0;
+}
