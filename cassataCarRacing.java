@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
@@ -74,6 +75,9 @@ public class cassataCarRacing extends Application{
 	
 	Image strada = new Image("it/edu/iisgubbio/gioco/strada.png");
 	ImageView stradaW = new ImageView(strada);
+	
+	Image game = new Image("it/edu/iisgubbio/gioco/gameOver.png");
+	ImageView gameW = new ImageView(game);
 	
 	int velS = 10;
 	int velocita = 8;
@@ -190,6 +194,9 @@ public class cassataCarRacing extends Application{
 			posX[3]=149;
 			posX[4]=193;
 			posX[5]=239;
+			
+			gameW.setX(700);
+			gameW.setY(700);
 			
 			griglia2.getChildren().add(stradaW);
 			for(int i=0;i<carW1.length;i++) {
@@ -410,6 +417,10 @@ public class cassataCarRacing extends Application{
 				
 				tempo.stop();
 			});
+			
+			gameW.setFitHeight(210);
+			gameW.setFitWidth(200);
+			griglia2.getChildren().add(gameW);
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
 		    setScene(scene);
@@ -658,21 +669,33 @@ public class cassataCarRacing extends Application{
 			if(gialla) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(mGiallaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
@@ -681,44 +704,68 @@ public class cassataCarRacing extends Application{
 			if(rossa) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(mRossaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
 			}
-			
+
 			if(blu || !veicolo) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(mBluW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
@@ -728,21 +775,33 @@ public class cassataCarRacing extends Application{
 			if(bVespa) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(vespaW.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
@@ -751,21 +810,33 @@ public class cassataCarRacing extends Application{
 			if(bMoto1) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(moto1W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
@@ -774,21 +845,33 @@ public class cassataCarRacing extends Application{
 			if(bMoto2) {
 			for(int i=0;i<carW1.length;i++) {
 				if(carW1[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW2[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW3[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW4[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW5[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 				if(carW6[i].getBoundsInParent().intersects(moto2W.getBoundsInParent())) {
+					gameW.setX(45);
+					gameW.setY(350);
 					tempo.stop();
 				}
 			}
