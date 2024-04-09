@@ -91,3 +91,8 @@
 #strada {
 	-fx-z-index: 0;
 }
+
+#punti {
+	-fx-font-family: 'Public Pixel', sans-serif;
+	-fx-font-size: 13;
+}
