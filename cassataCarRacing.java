@@ -82,6 +82,7 @@ public class cassataCarRacing extends Application{
 	
 	int velS = 11;
 	int velocita = 8;
+	int best = 0;
 	
 	Button apri = new Button("GIOCA");
 	Button giocatore = new Button("Seleziona veicolo");
@@ -161,6 +162,7 @@ public class cassataCarRacing extends Application{
 
 	public class FinestraGioco extends Stage{
 		Timeline tempo = new Timeline(new KeyFrame(Duration.seconds(0.02), x->aggiorna()));
+		Timeline tempo2 = new Timeline(new KeyFrame(Duration.seconds(0.1), x->aggiorna2()));
 		int y = -278;
 		int rotazione = 0;
 		double x = 10;
@@ -168,6 +170,7 @@ public class cassataCarRacing extends Application{
 		int punteggio = 0;
 		Boolean vivo = true;
 		Label punti = new Label("punti: " + punteggio);
+		Label lBest = new Label("Best Score: " + best);
 		Boolean veicolo = false;
 		ImageView carW1[] = new ImageView[3];
 		ImageView carW2[] = new ImageView[3];
@@ -175,6 +178,7 @@ public class cassataCarRacing extends Application{
 		ImageView carW4[] = new ImageView[3];
 		ImageView carW5[] = new ImageView[3];
 		ImageView carW6[] = new ImageView[3];
+		Button riavvia = new Button("RIAVVIA");
 		
 		int posX[] = new int[6];
 		int y1=-400;
@@ -191,7 +195,11 @@ public class cassataCarRacing extends Application{
 			
 			stradaW.setId("strada");
 			
-			punti.setLayoutY(30);
+			lBest.setLayoutX(15);
+			lBest.setLayoutY(40);
+			lBest.setId("best");
+			
+			punti.setLayoutY(20);
 			punti.setLayoutX(15);
 			punti.setId("punti");
 			
@@ -356,6 +364,8 @@ public class cassataCarRacing extends Application{
 			
 			tempo.setCycleCount(Timeline.INDEFINITE);
 			tempo.play();
+			tempo2.setCycleCount(Timeline.INDEFINITE);
+			tempo2.play();
 			
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(bugsW);
@@ -424,25 +434,45 @@ public class cassataCarRacing extends Application{
 				bMoto2=false;
 				
 				tempo.stop();
+				tempo2.stop();
 			});
 			
 			gameW.setFitHeight(210);
 			gameW.setFitWidth(200);
+			riavvia.setLayoutX(700);
+			riavvia.setLayoutY(700);
+			//riavvia.setId(STYLESHEET_CASPIAN);
 			griglia2.getChildren().add(gameW);
 			griglia2.getChildren().add(punti);
+			griglia2.getChildren().add(lBest);
+			griglia2.getChildren().add(riavvia);
 			getIcons().add(new Image("it/edu/iisgubbio/gioco/icona.png"));
 		    setTitle("CCR: Cassata Car Racing");
 		    setScene(scene);
 		    setResizable(true);
 		  }
 
+		private void aggiorna2() {
+			if(vivo) {
+				punteggio+=1;
+				punti.setText("punti: " + punteggio);
+			}
+			
+			if(punteggio>best) {
+				best=punteggio;
+				lBest.setText("Best Score: " + best);
+			}
+		}
+
 		private void muovi(KeyEvent e) {
 //			  rotazione macchina
-				if(e.getCode() == KeyCode.LEFT) {
+				int yGame = (int) gameW.getY();
+				int xGame = (int) gameW.getX();
+				if(e.getCode() == KeyCode.LEFT && yGame == 700 && xGame==700) {
 					rotazione-=5;
 				}
 				
-				if(e.getCode() == KeyCode.RIGHT) {
+				if(e.getCode() == KeyCode.RIGHT && yGame == 700 && xGame==700) {
 					rotazione+=5;
 				}
 				
@@ -454,7 +484,7 @@ public class cassataCarRacing extends Application{
 					rotazione+=5;
 				}
 				
-				if(e.getCode() != KeyCode.RIGHT && e.getCode() != KeyCode.LEFT) {
+				if(e.getCode() != KeyCode.RIGHT && e.getCode() != KeyCode.LEFT && yGame == 700 && xGame==700) {
 					bugsW.setX(95);
 					bugsW.setY(100);
 				}
@@ -484,11 +514,6 @@ public class cassataCarRacing extends Application{
 		  
 		public void aggiorna() {
 			
-			if(vivo) {
-				punteggio+=1;
-				punti.setText("punti: " + punteggio);
-			}
-			
 //			movimento strada
 			stradaW.setY(y);
 			y = y + velS;
@@ -497,6 +522,7 @@ public class cassataCarRacing extends Application{
 				bugsW.setY(700);
 				y=-278;
 			}
+			
 //			movimento macchina
 			if(x>9 && x<240) {
 			if(rotazione>0) {
@@ -1094,6 +1120,7 @@ public class cassataCarRacing extends Application{
 	        	
 	            hide();
 	        });
+	        
 			btn.setLayoutX(330);
 			btn.setLayoutY(440);
 			
