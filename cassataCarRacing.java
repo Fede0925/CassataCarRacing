@@ -1255,9 +1255,14 @@ public class cassataCarRacing extends Application{
 		}
 	
 	public class FinestraDifficolta extends Stage{
+		Button bFacile = new Button("FACILE");
+		Button bMedio = new Button("MEDIO");
+		Button bDifficile = new Button("DIFFICILE");
+		
 		  public FinestraDifficolta(){
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 1210, 444);
+			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
 		
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(gattoW);
@@ -1266,6 +1271,21 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(rockW);
 			griglia2.getChildren().add(homerW);
 			griglia2.getChildren().add(shrekW);
+			griglia2.getChildren().add(bFacile);
+			griglia2.getChildren().add(bMedio);
+			griglia2.getChildren().add(bDifficile);
+			
+			bFacile.setId("facile");
+			bMedio.setId("medio");
+			bDifficile.setId("difficile");
+			
+			bFacile.setLayoutX(500);
+			bMedio.setLayoutX(500);
+			bDifficile.setLayoutX(500);
+			
+			bFacile.setLayoutY(150);
+			bMedio.setLayoutY(200);
+			bDifficile.setLayoutY(250);
 			
 			giammaW.setX(0);
 			giammaW.setY(152);
