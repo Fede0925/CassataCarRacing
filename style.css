@@ -120,7 +120,7 @@
     -fx-text-fill: rgb(0, 72, 18);
     -fx-font-family: 'Public Pixel', sans-serif;
     -fx-font-size: 18;
-    -fx-padding: 10 41 10 41;
+    -fx-padding: 10 61 10 61;
     -fx-font-weight: bolder;
 }
 
@@ -134,20 +134,34 @@
     -fx-text-fill: rgb(98, 37, 0);
     -fx-font-family: 'Public Pixel', sans-serif;
     -fx-font-size: 18;
-    -fx-padding: 10 50 10 50;
+    -fx-padding: 10 70 10 70;
     -fx-font-weight: bolder;
 }
 
 #difficile{
-		-fx-background-color:
-        linear-gradient(rgb(255, 0, 0), rgb(215, 0, 0)),
-        radial-gradient(center 50% -40%, radius 200%, rgb(255, 0, 0) 45%, rgb(215, 0, 0) 50%);
+	-fx-background-color:
+       linear-gradient(rgb(255, 0, 0), rgb(215, 0, 0)),
+       radial-gradient(center 50% -40%, radius 200%, rgb(255, 0, 0) 45%, rgb(215, 0, 0) 50%);
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #610000;
     -fx-font-family: 'Public Pixel', sans-serif;
     -fx-font-size: 18;
-    -fx-padding: 12 15 12 15;
+    -fx-padding: 12 35 12 35;
+    -fx-font-weight: bolder;
+}
+
+#esci{
+	-fx-background-color:
+        linear-gradient(#ff6200, #ff0000),
+        radial-gradient(center 50% -40%, radius 200%, #ff6200 45%, #ff0000 50%);
+           -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #610000;
+    -fx-font-family: 'Public Pixel', sans-serif;
+    -fx-font-size: 18;
+    -fx-padding: 12 35 12 35;
     -fx-font-weight: bolder;
 }

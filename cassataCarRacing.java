@@ -79,8 +79,8 @@ public class cassataCarRacing extends Application{
 	Image game = new Image("it/edu/iisgubbio/gioco/gameOver.png");
 	ImageView gameW = new ImageView(game);
 	
-	int velS = 11;
-	int velocita = 8;
+	int velS = 13;
+	int velocita = 6;
 	int best = 0;
 	
 	Button apri = new Button("GIOCA");
@@ -165,7 +165,6 @@ public class cassataCarRacing extends Application{
 		int y = -278;
 		int rotazione = 0;
 		double x = 10;
-		int velocita = 6;
 		int punteggio = 0;
 		Boolean vivo = true;
 		Label punti = new Label("punti: " + punteggio);
@@ -1258,10 +1257,12 @@ public class cassataCarRacing extends Application{
 		Button bFacile = new Button("FACILE");
 		Button bMedio = new Button("MEDIO");
 		Button bDifficile = new Button("DIFFICILE");
+		Button bEsci = new Button("SALVA ED ESCI");
+		Label lDifficolta = new Label("Difficoltà: FACILE");
 		
 		  public FinestraDifficolta(){
 			Pane griglia2 = new Pane();
-			Scene scene = new Scene(griglia2 , 1210, 444);
+			Scene scene = new Scene(griglia2 , 890, 444);
 			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
 		
 			griglia2.setPadding(new Insets(10));
@@ -1274,18 +1275,32 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(bFacile);
 			griglia2.getChildren().add(bMedio);
 			griglia2.getChildren().add(bDifficile);
+			griglia2.getChildren().add(bEsci);
+			griglia2.getChildren().add(lDifficolta);
+			
+			lDifficolta.setLayoutX(300);
+			lDifficolta.setLayoutY(100);
 			
 			bFacile.setId("facile");
 			bMedio.setId("medio");
 			bDifficile.setId("difficile");
 			
-			bFacile.setLayoutX(500);
-			bMedio.setLayoutX(500);
-			bDifficile.setLayoutX(500);
+			bFacile.setLayoutX(335);
+			bMedio.setLayoutX(335);
+			bDifficile.setLayoutX(335);
 			
 			bFacile.setLayoutY(150);
 			bMedio.setLayoutY(200);
 			bDifficile.setLayoutY(250);
+			
+			bFacile.setOnAction(e->falcie());
+			bMedio.setOnAction(e->medio());
+			bDifficile.setOnAction(e->difficile());
+			
+			bEsci.setOnAction(e->esci());
+			bEsci.setLayoutX(300);
+			bEsci.setLayoutY(340);
+			bEsci.setId("esci");
 			
 			giammaW.setX(0);
 			giammaW.setY(152);
@@ -1295,15 +1310,15 @@ public class cassataCarRacing extends Application{
 			ranaW.setY(292);
 			ranaW.setFitHeight(152);
 			ranaW.setFitWidth(240);
-			rockW.setX(970);
+			rockW.setX(650);
 			rockW.setY(0);
 			rockW.setFitHeight(140);
 			rockW.setFitWidth(240);
-			homerW.setX(970);
+			homerW.setX(650);
 			homerW.setY(140);
 			homerW.setFitHeight(152);
 			homerW.setFitWidth(240);
-			shrekW.setX(970);
+			shrekW.setX(650);
 			shrekW.setY(292);
 			shrekW.setFitHeight(152);
 			shrekW.setFitWidth(240);
@@ -1313,6 +1328,23 @@ public class cassataCarRacing extends Application{
 		    setScene(scene);
 		    setResizable(false);
 		  }
+
+		private void esci() {
+			hide();
+		}
+
+		private void difficile() {
+			velocita = 10;
+		}
+
+		private void medio() {
+			velocita = 8;
+		}
+
+		private void falcie() {
+			velocita = 6;
+		}
+		
 		}
 	
 	public class FinestraVeicolo extends Stage{
