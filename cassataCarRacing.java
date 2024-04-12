@@ -1258,13 +1258,14 @@ public class cassataCarRacing extends Application{
 		Button bMedio = new Button("MEDIO");
 		Button bDifficile = new Button("DIFFICILE");
 		Button bEsci = new Button("SALVA ED ESCI");
-		Label lDifficolta = new Label("Difficoltà: FACILE");
+		Label lDifficolta = new Label();
 		
 		  public FinestraDifficolta(){
 			Pane griglia2 = new Pane();
 			Scene scene = new Scene(griglia2 , 890, 444);
 			scene.getStylesheets().add("it/edu/iisgubbio/gioco/style.css");
-		
+			griglia2.setId("fDiff");
+			
 			griglia2.setPadding(new Insets(10));
 			griglia2.getChildren().add(gattoW);
 			griglia2.getChildren().add(giammaW);
@@ -1278,8 +1279,13 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(bEsci);
 			griglia2.getChildren().add(lDifficolta);
 			
-			lDifficolta.setLayoutX(300);
-			lDifficolta.setLayoutY(100);
+			if(velocita == 6) {lDifficolta.setText("Difficolta: FACILE");}
+			if(velocita == 8) {lDifficolta.setText("Difficolta: MEDIO");}
+			if(velocita == 10) {lDifficolta.setText("Difficolta: DIFFICILE");}
+			
+			lDifficolta.setLayoutX(290);
+			lDifficolta.setLayoutY(70);
+			lDifficolta.setId("lDiff");
 			
 			bFacile.setId("facile");
 			bMedio.setId("medio");
@@ -1335,14 +1341,20 @@ public class cassataCarRacing extends Application{
 
 		private void difficile() {
 			velocita = 10;
+			lDifficolta.setText("Difficolta: DIFFICILE");
+			velS = 13;
 		}
 
 		private void medio() {
 			velocita = 8;
+			lDifficolta.setText("Difficolta: MEDIO");
+			velS = 13;
 		}
 
 		private void falcie() {
 			velocita = 6;
+			lDifficolta.setText("Difficolta: FACILE");
+			velS = 10;
 		}
 		
 		}
