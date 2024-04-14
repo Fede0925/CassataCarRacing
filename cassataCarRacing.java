@@ -484,6 +484,7 @@ public class cassataCarRacing extends Application{
 						gameW.setX(700);
 						gameW.setY(700);
 						punteggio = 0;
+						x=0; 
 						
 						for(int i=0;i<carW1.length;i++) {
 							int r = random(100, 1000);
@@ -1367,6 +1368,12 @@ public class cassataCarRacing extends Application{
 		RadioButton vespaRb = new RadioButton();
 		RadioButton moto2 = new RadioButton();
 		RadioButton moto3 = new RadioButton();
+		Label macc1 = new Label("Macchina Blu");
+		Label macc2 = new Label("Macchina Rossa");
+		Label macc3 = new Label("Macchina Gialla");
+		Label lMoto1 = new Label("Vaspa di Effe");
+		Label lMoto2 = new Label("Moto Rossa");
+		Label lMoto3 = new Label("Moto Blu");
 		
 		  public FinestraVeicolo(){
 			Pane griglia2 = new Pane();
@@ -1379,6 +1386,13 @@ public class cassataCarRacing extends Application{
 			bVespa=false;
 			bMoto1=false;
 			bMoto2=false;
+			
+			macc1.getStyleClass().add("lNomi");
+			macc2.getStyleClass().add("lNomi");
+			macc3.getStyleClass().add("lNomi");
+			lMoto1.getStyleClass().add("lNomi");
+			lMoto2.getStyleClass().add("lNomi");
+			lMoto3.getStyleClass().add("lNomi");
 			
 			mBluW.setRotate(0);
 			mRossaW.setRotate(0);
@@ -1404,19 +1418,43 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(moto1W);
 			griglia2.getChildren().add(moto2W);
 			griglia2.getChildren().add(btn);
+			griglia2.getChildren().add(macc1);
+			griglia2.getChildren().add(macc2);
+			griglia2.getChildren().add(macc3);
+			griglia2.getChildren().add(lMoto1);
+			griglia2.getChildren().add(lMoto2);
+			griglia2.getChildren().add(lMoto3);
+			
+			macc1.setLayoutX(145);
+			macc1.setLayoutY(135);
+			
+			macc2.setLayoutX(380);
+			macc2.setLayoutY(135);
+			
+			macc3.setLayoutX(625);
+			macc3.setLayoutY(135);
+			
+			lMoto1.setLayoutX(140);
+			lMoto1.setLayoutY(355);
+			
+			lMoto3.setLayoutX(415);
+			lMoto3.setLayoutY(355);
+			
+			lMoto2.setLayoutX(650);
+			lMoto2.setLayoutY(355);
 			
 			mBluW.setX(195);
 			mRossaW.setX(445);
 			mGiallaW.setX(695);
-			mBluW.setY(60);
-			mRossaW.setY(60);
-			mGiallaW.setY(60);
+			mBluW.setY(50);
+			mRossaW.setY(50);
+			mGiallaW.setY(50);
 			vespaW.setX(195);
 			moto1W.setX(445);
 			moto2W.setX(695);
-			vespaW.setY(280);
-			moto1W.setY(280);
-			moto2W.setY(280);
+			vespaW.setY(270);
+			moto1W.setY(270);
+			moto2W.setY(270);
 			
 //			macchina 1
 			macchinaBlu.setToggleGroup(veicoli);
@@ -1448,7 +1486,7 @@ public class cassataCarRacing extends Application{
 			moto2.setLayoutY(380);
 			
 			moto3.setToggleGroup(veicoli);
-			moto3.setLayoutX(700);
+			moto3.setLayoutX(698);
 			moto3.setLayoutY(380);
 			
 	        btn.setText("Salva ed Esci");
