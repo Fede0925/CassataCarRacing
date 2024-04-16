@@ -1335,23 +1335,25 @@ public class cassataCarRacing extends Application{
 		    setScene(scene);
 		    setResizable(false);
 		  }
-
+		  
+//		chiude la finestra
 		private void esci() {
 			hide();
 		}
-
+		
+// 		imposta difficoltà difficile
 		private void difficile() {
 			velocita = 10;
 			lDifficolta.setText("Difficolta: DIFFICILE");
 			velS = 13;
 		}
-
+// imposta difficolta media
 		private void medio() {
 			velocita = 8;
 			lDifficolta.setText("Difficolta: MEDIO");
 			velS = 13;
 		}
-
+// imposta difficolta facile
 		private void falcie() {
 			velocita = 6;
 			lDifficolta.setText("Difficolta: FACILE");
@@ -1443,6 +1445,7 @@ public class cassataCarRacing extends Application{
 			lMoto2.setLayoutX(650);
 			lMoto2.setLayoutY(355);
 			
+//			impostazione 
 			mBluW.setX(195);
 			mRossaW.setX(445);
 			mGiallaW.setX(695);
@@ -1456,42 +1459,46 @@ public class cassataCarRacing extends Application{
 			moto1W.setY(270);
 			moto2W.setY(270);
 			
-//			macchina 1
+//			macchina blu - radio button
 			macchinaBlu.setToggleGroup(veicoli);
 			macchinaBlu.setLayoutX(200);
 			macchinaBlu.setLayoutY(160);
-//			macchina 2
+//			macchina rossa - radio button
 			macchinaRossa.setToggleGroup(veicoli);
 			macchinaRossa.setLayoutX(450);
 			macchinaRossa.setLayoutY(160);
-//			macchina 3
+//			macchina gialla - radio button
 			macchinaGialla.setToggleGroup(veicoli);
 			macchinaGialla.setLayoutX(700);
 			macchinaGialla.setLayoutY(160);
 			
+//			id css radio button macchine e moto
 			macchinaBlu.setId("m1");
 			macchinaRossa.setId("m2");
 			macchinaGialla.setId("m3");
-			
 			vespaRb.setId("m1");
 			moto2.setId("m2");
 			moto3.setId("m3");
 			
+//			vespa di effe - radio button
 			vespaRb.setToggleGroup(veicoli);
 			vespaRb.setLayoutX(200);
 			vespaRb.setLayoutY(380);
-			
+//			moto rossa - radio button
 			moto2.setToggleGroup(veicoli);
 			moto2.setLayoutX(450);
 			moto2.setLayoutY(380);
-			
+//			moto blu- radio button
 			moto3.setToggleGroup(veicoli);
 			moto3.setLayoutX(698);
 			moto3.setLayoutY(380);
 			
+//			bottone salva ed esci
 	        btn.setText("Salva ed Esci");
 	        btn.setId("save");
 	        btn.setOnAction((ActionEvent event) -> {
+	        	
+//	        	imposta macchima selezionata
 	        	if(macchinaBlu.isSelected()) {
 	        		blu=true;
 	        	}
@@ -1511,6 +1518,7 @@ public class cassataCarRacing extends Application{
 	        		bMoto2=true;
 	        	}
 	        	
+//	        	chiude la finestra
 	            hide();
 	        });
 	        
