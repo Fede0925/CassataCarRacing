@@ -1284,10 +1284,12 @@ public class cassataCarRacing extends Application{
 			if(velocita == 8) {lDifficolta.setText("Difficolta: MEDIO");}
 			if(velocita == 10) {lDifficolta.setText("Difficolta: DIFFICILE");}
 			
+//			label difficoltà selezionata
 			lDifficolta.setLayoutX(290);
 			lDifficolta.setLayoutY(70);
 			lDifficolta.setId("lDiff");
 			
+//			css bottoni difficoltà
 			bFacile.setId("facile");
 			bMedio.setId("medio");
 			bDifficile.setId("difficile");
@@ -1309,6 +1311,7 @@ public class cassataCarRacing extends Application{
 			bEsci.setLayoutY(340);
 			bEsci.setId("esci");
 			
+//			imposta posizione e grandezza delle gif e immaini
 			giammaW.setX(0);
 			giammaW.setY(152);
 			giammaW.setFitHeight(140);
@@ -1362,7 +1365,9 @@ public class cassataCarRacing extends Application{
 		
 		}
 	
+//	finestra selezione del veicolo
 	public class FinestraVeicolo extends Stage{
+//		radio button per selezionare il veicolo
 		ToggleGroup veicoli = new ToggleGroup();
 		RadioButton macchinaBlu = new RadioButton();
 		RadioButton macchinaRossa = new RadioButton();
@@ -1370,6 +1375,7 @@ public class cassataCarRacing extends Application{
 		RadioButton vespaRb = new RadioButton();
 		RadioButton moto2 = new RadioButton();
 		RadioButton moto3 = new RadioButton();
+//		nomi delle macchine e moto
 		Label macc1 = new Label("Macchina Blu");
 		Label macc2 = new Label("Macchina Rossa");
 		Label macc3 = new Label("Macchina Gialla");
@@ -1389,6 +1395,7 @@ public class cassataCarRacing extends Application{
 			bMoto1=false;
 			bMoto2=false;
 			
+//			id css label macchine e moto
 			macc1.getStyleClass().add("lNomi");
 			macc2.getStyleClass().add("lNomi");
 			macc3.getStyleClass().add("lNomi");
@@ -1396,6 +1403,7 @@ public class cassataCarRacing extends Application{
 			lMoto2.getStyleClass().add("lNomi");
 			lMoto3.getStyleClass().add("lNomi");
 			
+//			imposta la rotazione delle macchine a 0
 			mBluW.setRotate(0);
 			mRossaW.setRotate(0);
 			mGiallaW.setRotate(0);
@@ -1427,6 +1435,7 @@ public class cassataCarRacing extends Application{
 			griglia2.getChildren().add(lMoto2);
 			griglia2.getChildren().add(lMoto3);
 			
+//			imposta la posizione delle label macchine / moto
 			macc1.setLayoutX(145);
 			macc1.setLayoutY(135);
 			
@@ -1445,7 +1454,7 @@ public class cassataCarRacing extends Application{
 			lMoto2.setLayoutX(650);
 			lMoto2.setLayoutY(355);
 			
-//			impostazione 
+//			imposta la posizione delle immageView macchine / moto
 			mBluW.setX(195);
 			mRossaW.setX(445);
 			mGiallaW.setX(695);
